@@ -20,17 +20,18 @@ var dunkpay = new dunkpay()
 dunkpay.cryptoType = "BTC"
 dunkpay.address = "1Lc1jhXdsB7t1XpTdNbrchnxKQide9tMia"
 dunkpay.amount = 0.001 
-//set Default setting.
-
-dunkpay.onSuccess(function(transactionId, successData){
-alert(successData)}
-dunkpay.onFailure(function(failData){
-alert(failData)}
-//set Callback Event.
 
 dunkpay.shot()
-//show popup.
 
+//or
+
+dunkpay.shot(function(err,result){
+ if(err)
+ {
+  console.log("Something was wrong." + err)
+ } 
+ console.log("Payment was success." + result)
+}
 ```
 
 # BROWSER  
