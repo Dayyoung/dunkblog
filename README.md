@@ -23,7 +23,7 @@ dunkpay.amount = 0.001
 
 dunkpay.shot()
 
-//or
+//or set callback.
 
 dunkpay.shot(function(err,result){
  if(err)
