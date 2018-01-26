@@ -1,33 +1,64 @@
  /* 
- BeeconJS JavaScript Library v0.1.3
- http://beeconjs.com/
+ DunkPay JavaScript Library 
+ https://www.DunkPay.com
  
- Copyright 2015, Dayyoung You
+ Copyright 2018, Greg You
  Dual licensed under the MIT or GPL Version 2 licenses.
- Visit http://beeconjs.com/license 
+ Visit https://www.DunkPay.com/license 
  */
-var Bees = [];
-var Bee = function (url, key , strict) {
-  this.url = url;
-  this.key = key;
-  this.BEECODE = null;
-  this.buttonList = [];
-  Bees.push(this);
-  this.data = null;
-  this.strict = strict;
+var Dunkpay = function (mode) {
+  this.mode = mode
 }
 
-var BeeButton = function(mark,action) {
-  this.mark = mark;
-  this.action = action;
+var dunkpayResult = function(err,result) {
+  this.err = err;
+  this.result = result;
 }
 
-Bee.prototype.addButton = function(position,mark,action)
+Dunkpay.prototype.shot = function(cb)
 {
-  this.buttonList[position-1]= new BeeButton(mark,action);
+  for (var k in this){
+      if (this.hasOwnProperty(k)) {
+           console.log(k + " : " + this[k]);
+      }
+  }
+
+  if(cb)
+  {
+    dunkpayResult = cb
+  }
+
+  this.ownerAddress = this.address // migration.
+  delete this.address
+
+  console.log(jsonToQueryString(this))
+
+  //if(this.type)
+  //alert(this.type)
+
+  //this.dunkpayResult = new dunkpayResult(err,result);
+
+  var PREFIX = "https://www.bitcoinyo.com/"
+  
+  if(this.mode == "testnet")
+    PREFIX = "http://test.bitcoinyo.com/"
+
+  window.open(PREFIX+this.type+jsonToQueryString(this), "BitcoinYo", "width=500, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );    
+
 }
 
-Bee.prototype.addData = function(data)
+function jsonToQueryString(json) {
+    return "?"+
+        Object.keys(json).map(function(key) {
+            return encodeURIComponent(key) + '=' +
+                encodeURIComponent(json[key]);
+        }).join('&');
+}
+
+function successInvoice(err , res)
 {
-  this.data= data;
+  if(err)
+    Dunkpay.cb.call(err, undefined)
+  if(res)
+    Dunkpay.cb.call(err, undefined)
 }

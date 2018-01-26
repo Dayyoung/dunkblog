@@ -1,83 +1,111 @@
-# SYNOPSIS
-[![NPM Package](https://img.shields.io/npm/v/ethashjs.svg?style=flat-square)](https://www.npmjs.org/package/ethashjs)
-[![Build Status](https://travis-ci.org/ethereumjs/ethashjs.svg?branch=master&style=flat-square)](https://travis-ci.org/ethereumjs/ethashjs)
-[![Coverage Status](https://img.shields.io/coveralls/ethereumjs/ethashjs.svg?style=flat-square)](https://coveralls.io/r/ethereumjs/ethashjs)
-[![Gitter](https://img.shields.io/gitter/room/ethereum/ethereumjs-lib.svg?style=flat-square)](https://gitter.im/ethereum/ethereumjs-lib) or #ethereumjs on freenode
+# About DunkPay.com
 
-Implements [Ethash](https://github.com/ethereum/wiki/wiki/Ethash)
+DunkPay.com is the service for users who want to pay with cryptocurrency.
+Create a link, copy it and sell what you want.
+As soon as transaction is completed, confirmation process starts immediately
+Transactions are guaranteed by blockchain method.
 
-# CONTACT
- [Scrollback](https://scrollback.io/ethereumjs/all/all-messages) or #ethereumjs on freenode
+"Play ball. Make your dream."
 
 # INSTALL
-`npm install ethashjs`
+Include script on your site.
+
+```javascript
+<script type="text/javascript" src="https://raw.githubusercontent.com/Dayyoung/dunkblog/master/dunkpay.js"></script>
+```
 
 # USAGE
+
+For sell ​​with bitcoin
+
 ```javascript
-const Ethash = require('ethashjs')
-const Block = require('ethereumjs-block')
-const levelup = require('levelup')
-const memdown = require('memdown')
+var dunkpay = new Dunkpay()
+dunkpay.type = "BTC"
+dunkpay.address = "1Lc1jhXdsB7t1XpTdNbrchnxKQide9tMia"
+dunkpay.amount = 0.001 
 
-var cacheDB = levelup('', {
-  db: memdown
-})
+dunkpay.shot()
+```
 
-var ethash = new Ethash(cacheDB);
-var validblockRlp = "f90667f905fba0a8d5b7a4793baaede98b5236954f634a0051842df6a252f6a80492fd888678bda01dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347948888f1f195afa192cfee860698584c030f4c9db1a0f93c8db1e931daa2e22e39b5d2da6fb4074e3d544094857608536155e3521bc1a0bb7495628f9160ddbcf6354380ee32c300d594e833caec3a428041a66e7bade1a0c7778a7376099ee2e5c455791c1885b5c361b95713fddcbe32d97fd01334d296b90100000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000400000000000000000000000000000000000000000000000000000008302000001832fefd882560b84559c17b9b9040001020304050607080910111213141516171819202122232410000000000000000000200000000000000000003000000000000000000040000000000000000000500000000000000000006000000000000000000070000000000000000000800000000000000000009000000000000000000010000000000000000000100000000000000000002000000000000000000030000000000000000000400000000000000000005000000000000000000060000000000000000000700000000000000000008000000000000000000090000000000000000000100000000000000000001000000000000000000020000000000000000000300000000000000000004000000000000000000050000000000000000000600000000000000000007000000000000000000080000000000000000000900000000000000000001000000000000000000010000000000000000000200000000000000000003000000000000000000040000000000000000000500000000000000000006000000000000000000070000000000000000000800000000000000000009000000000000000000010000000000000000000100000000000000000002000000000000000000030000000000000000000400000000000000000005000000000000000000060000000000000000000700000000000000000008000000000000000000090000000000000000000100000000000000000001000000000000000000020000000000000000000300000000000000000004000000000000000000050000000000000000000600000000000000000007000000000000000000080000000000000000000900000000000000000001000000000000000000010000000000000000000200000000000000000003000000000000000000040000000000000000000500000000000000000006000000000000000000070000000000000000000800000000000000000009000000000000000000010000000000000000000100000000000000000002000000000000000000030000000000000000000400000000000000000005000000000000000000060000000000000000000700000000000000000008000000000000000000090000000000000000000100000000000000000001000000000000000000020000000000000000000300000000000000000004000000000000000000050000000000000000000600000000000000000007000000000000000000080000000000000000000900000000000000000001000000000000000000010000000000000000000200000000000000000003000000000000000000040000000000000000000500000000000000000006000000000000000000070000000000000000000800000000000000000009000000000000000000010000000000000000000a09c7b47112a3afb385c12924bf6280d273c106eea7caeaf5131d8776f61056c148876ae05d46b58d1fff866f864800a82c35094095e7baea6a6c7c4c2dfeb977efac326af552d8785012a05f200801ba01d2c92cfaeb04e53acdff2b5d42005ff6aacdb0105e64eb8c30c273f445d2782a01e7d50ffce57840360c57d94977b8cdebde614da23e8d1e77dc07928763cfe21c0"
+# ADVANCE USAGE
 
-var validblock = new Block(new Buffer(validblockRlp, 'hex'))
+For sell ​​in dollars
 
-ethash.verifyPOW(validblock, function (result) {
-  console.log(result)
+```javascript
+var dunkpay = new Dunkpay()
+dunkpay.type = "BCH"
+dunkpay.address = "19zgnCTYzq1eww1JpGCi5ZSvFPiCC7fVHa"
+dunkpay.itemName = "Bascketball🏀"
+dunkpay.currency = "USD" 
+dunkpay.amount = 2 // 2dollars
+dunkpay.invoiceMail = "dunkpay.com@gmail.com"
+
+dunkpay.shot(function(err,result){
+ if(err)
+ {
+  console.log("Something was wrong." + err)
+ } 
+ console.log("Payment was success." + result)		
 })
 ```
 
-# BROWSER  
-Yep, You can [browserify](http://browserify.org/) it.
+For sell with escrow
 
-# API
-- [`new Ethash([cacheDB])`](#newethashcachedb)
-- [`ethash.verifyPOW(block, cb)`](#ethashverifypowblock-cb)
-- [`ethash.mkcache(cacheSize, seed)`](#ethashmkcachecachesize-seed)
-- [`ethash.run(val, nonce, fullsize)`](#ethashrunval-nonce-fullsize)
+```javascript
+var dunkpay = new Dunkpay()
+dunkpay.type = "ETH"
+dunkpay.address = "0x41C87EDB6AB6C719456EACC992F4C2FE278FF8D4"
+dunkpay.itemName = "겔럭시29"
+dunkpay.amount = 10000 // 10000원  
+dunkpay.currency = "KRW" 
+dunkpay.escrow = true
 
-### `new Ethash([cacheDB])`
-Creates a new instance of `Ethash`.
+dunkpay.shot(function(err,result){
+ if(err)
+ {
+  console.log("Something was wrong." + err)
+ } 
+ console.log("Payment was success." + result)			
+})
+```
 
-**Parameters**
-- `cacheDB` - an instance of a levelup db which is used to store the cache(s)
+# OPTION
 
-### `ethash.verifyPOW(block, cb)`
-Verifies the POW on a block and its uncles
+**type (Required*)**
+- `type` - The type of cryptocurrency. We support BTC/BCH/ETH. 
 
-**Parameters**  
-- `block` - the [block](https://github.com/ethereum/ethereumjs-block) to verify
-- `cb` - the callback which is given a `Boolean` determining the validaty of the block 
+**address (Required*)**
+- `address` - Owned by you. When the coin is deposited, it will be sent to this address. 
 
-### `ethash.mkcache(cacheSize, seed)`
-Creates a cache. NOTE: this is automatically done for in  - [`ethash.verifyPOW(block, cb)`](#ethashverifypowblock-cb) so you do not need to use this function if you are just validating blocks
+**amount (Required*)**
+- `amount` - Price that you want to get. The default unit of amount is BTC/BCH/ETH. 
 
-**Parameters** 
-- `cachSize` - the size of the cach
-- `seed` - the seed as a `Buffer`
+**currency**
+- `currency` - The unit of currency that you want to sell price. [For support currency see.](https://blockchain.info/api/exchange_rates_api)
 
+**escrow**
+- `escrow` - An option to enable your escrow payment. It completes when your buyer confirms a transaction. 
 
-### `ethash.run(val, nonce, fullsize)`
-Runs ethash on a give val/nonce pair. NOTE: you need to run [`ethash.mkcache(cacheSize, seed)`](#ethashverifypowcachesize-seed) first before using this function.
+**itemName**
+- `itemName` - It will be described on your product. It supports UTF-8 encoded character.
 
-**Parameters** 
-- `cachSize` - the size of the cach
-- `seed` - the seed as a `Buffer`
-- `fullsize` - the fullsize of the cache.
+**invoiceMail**
+- `invoiceMail` - InvoiceMail will send it to you when your transaction is completed. If you cannot receive any mail , please check you spam mailbox. 
 
-**Return**
-and `Object` containing 
-- `hash`  - the hash of the value
-- `mix` - the mis result
+**redirectUrl**
+- `redirectUrl` - It is url destination to move page when your transaction is completed. 
 
-# TESTS
-`npm test`
+**notificationUrl**
+- `notificationUrl` - It is place where your server can receive request when your transaction is completed. Whole query string will be return. 
+
+# TESTNET
+You can try test with parameter `new dunkpay('testnet')`
+
+Cryptocurrency | Support 
+------------ | -------------
+BTC | TESTNET
+BCH | NOT SUPPORTED
+ETH | ROPSTEN
 
 # LICENSE
 [MPL-2.0](https://www.mozilla.org/MPL/2.0/)

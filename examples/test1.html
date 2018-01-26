@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Title of the document</title>
+	<!--<script type="text/javascript" src="https://raw.githubusercontent.com/Dayyoung/dunkblog/master/dunkpay.js"></script> -->	
+	<script type="text/javascript" src="../dunkpay.js"></script>
+
+	<script type="text/javascript">
+		
+		function sell() {
+			var dunkpay = new Dunkpay("testnet")
+			dunkpay.type = "BTC"
+			dunkpay.address = "1Lc1jhXdsB7t1XpTdNbrchnxKQide9tMia"
+			dunkpay.amount = 0.001 
+
+			dunkpay.shot(function(err,result){
+				 if(err)
+				 {
+				  console.log("Something was wrong." + err)
+				 } 
+				 console.log("Payment was success." + result)				
+			})
+		}
+
+		function sellInDollars() {
+			var dunkpay = new Dunkpay()
+			dunkpay.type = "BCH"
+			dunkpay.address = "19zgnCTYzq1eww1JpGCi5ZSvFPiCC7fVHa"
+			dunkpay.itemName = "Bascketball🏀"
+			dunkpay.currency = "USD" 
+			dunkpay.amount = 2 // 2dollars
+			dunkpay.invoiceMail = "dunkpay.com@gmail.com"
+
+			dunkpay.shot(function(err,result){
+				 if(err)
+				 {
+				  console.log("Something was wrong." + err)
+				 } 
+				 console.log("Payment was success." + result)				
+			})
+		}
+
+		function sellWithEscrow() {
+			var dunkpay = new Dunkpay()
+			dunkpay.type = "ETH"
+			dunkpay.address = "0x41C87EDB6AB6C719456EACC992F4C2FE278FF8D4"
+			dunkpay.amount = 10000  
+			dunkpay.currency = "KRW" 
+			dunkpay.escrow = true
+
+			dunkpay.shot(function(err,result){
+				 if(err)
+				 {
+				  console.log("Something was wrong." + err)
+				 } 
+				 console.log("Payment was success." + result)
+			})
+		}
+
+	</script>
+</head>
+
+<body>
+	<br>
+	<br>
+	DunkPay.com
+	<br>
+	<br>
+	<button onclick="sell()">Sell</button>
+	<br>
+	<br>
+	<button onclick="sellInDollars()">For sell ​​in dollars</button>
+	<br>
+	<br>
+	<button onclick="sellWithEscrow()">Sell with escrow</button>
+</body>
+
+</html>
