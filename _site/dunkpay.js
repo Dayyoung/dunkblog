@@ -28,13 +28,6 @@ Dunkpay.prototype.shot = function(callback)
   this.ownerAddress = this.address // migration.
   delete this.address
 
-  console.log(jsonToQueryString(this))
-
-  //if(this.type)
-  //alert(this.type)
-
-  //this.dunkpayResult = new dunkpayResult(err,result);
-
   var PREFIX = "https://www.bitcoinyo.com/"
   
   if(this.mode == "testnet")
@@ -61,11 +54,9 @@ function receiveMessage(event) {
   {
   try {
     var jsonData = JSON.parse(event.data)
-    console.log(JSON.stringify(jsonData))
     Context.callback(undefined , jsonData)     
     }
     catch(err) {      
-    console.log(err)
     Context.callback(err , undefined)     
     }
   }
