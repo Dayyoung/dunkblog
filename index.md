@@ -7,7 +7,7 @@ Transactions are guaranteed by blockchain method.
 
 "Play ball. Make your dream."
 
-# INSTALL
+# INSTALLATION
 Include script on your site.
 
 ```javascript
@@ -55,7 +55,7 @@ For sell with escrow
 var dunkpay = new Dunkpay()
 dunkpay.type = "ETH"
 dunkpay.address = "0x41C87EDB6AB6C719456EACC992F4C2FE278FF8D4"
-dunkpay.itemName = "겔럭시29"
+dunkpay.itemName = "겔럭시9"
 dunkpay.amount = 10000 // 10000원  
 dunkpay.currency = "KRW" 
 dunkpay.escrow = true
@@ -106,6 +106,9 @@ Cryptocurrency | Support
 BTC | TESTNET
 BCH | NOT SUPPORTED
 ETH | ROPSTEN
+
+# TESTING
+ [/examples/test.html](/examples/test.html)
 
 # LICENSE
 [MPL-2.0](https://www.mozilla.org/MPL/2.0/)
