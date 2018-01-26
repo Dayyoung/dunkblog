@@ -6,26 +6,23 @@
  Dual licensed under the MIT or GPL Version 2 licenses.
  Visit https://www.DunkPay.com/license 
  */
+var Context;
+
 var Dunkpay = function (mode) {
   this.mode = mode
+  Context = this
 }
 
-var dunkpayResult = function(err,result) {
-  this.err = err;
-  this.result = result;
-}
-
-Dunkpay.prototype.shot = function(cb)
+Dunkpay.prototype.shot = function(callback)
 {
+  if(callback)
+  {
+    this.callback = callback
+  }
   for (var k in this){
       if (this.hasOwnProperty(k)) {
            console.log(k + " : " + this[k]);
       }
-  }
-
-  if(cb)
-  {
-    dunkpayResult = cb
   }
 
   this.ownerAddress = this.address // migration.
@@ -55,10 +52,21 @@ function jsonToQueryString(json) {
         }).join('&');
 }
 
-function successInvoice(err , res)
-{
-  if(err)
-    Dunkpay.cb.call(err, undefined)
-  if(res)
-    Dunkpay.cb.call(err, undefined)
+window.addEventListener("message", receiveMessage, false);
+
+function receiveMessage(event) {
+  //alert(event.data);
+  //..do something..
+  if(Context.callback)
+  {
+  try {
+    var jsonData = JSON.parse(event.data)
+    console.log(JSON.stringify(jsonData))
+    Context.callback(undefined , jsonData)     
+    }
+    catch(err) {      
+    console.log(err)
+    Context.callback(err , undefined)     
+    }
+  }
 }

@@ -7,8 +7,8 @@
 
 	<script type="text/javascript">
 		
-		function sell() {
-			var dunkpay = new Dunkpay("testnet")
+		function sell(mode) {
+			var dunkpay = new Dunkpay(mode)
 			dunkpay.type = "BTC"
 			dunkpay.address = "1Lc1jhXdsB7t1XpTdNbrchnxKQide9tMia"
 			dunkpay.amount = 0.001 
@@ -18,12 +18,12 @@
 				 {
 				  console.log("Something was wrong." + err)
 				 } 
-				 console.log("Payment was success." + result)				
+				 console.log("Payment was success." + result.transactionId)				
 			})
 		}
 
-		function sellInDollars() {
-			var dunkpay = new Dunkpay()
+		function sellInDollars(mode) {
+			var dunkpay = new Dunkpay(mode)
 			dunkpay.type = "BCH"
 			dunkpay.address = "19zgnCTYzq1eww1JpGCi5ZSvFPiCC7fVHa"
 			dunkpay.itemName = "Bascketball🏀"
@@ -36,12 +36,12 @@
 				 {
 				  console.log("Something was wrong." + err)
 				 } 
-				 console.log("Payment was success." + result)				
+				 console.log("Payment was success." + result.transactionId)				
 			})
 		}
 
-		function sellWithEscrow() {
-			var dunkpay = new Dunkpay()
+		function sellWithEscrow(mode) {
+			var dunkpay = new Dunkpay(mode)
 			dunkpay.type = "ETH"
 			dunkpay.address = "0x41C87EDB6AB6C719456EACC992F4C2FE278FF8D4"
 			dunkpay.amount = 10000  
@@ -53,7 +53,7 @@
 				 {
 				  console.log("Something was wrong." + err)
 				 } 
-				 console.log("Payment was success." + result)
+				 console.log("Payment was success." + result.transactionId)
 			})
 		}
 
@@ -62,17 +62,29 @@
 
 <body>
 	<br>
+	DunkPay.com - Javascript library for cryptocurrency payment.
 	<br>
-	DunkPay.com
+	<br>
+	For Livenet
 	<br>
 	<br>
 	<button onclick="sell()">Sell</button>
 	<br>
-	<br>
 	<button onclick="sellInDollars()">For sell ​​in dollars</button>
 	<br>
-	<br>
 	<button onclick="sellWithEscrow()">Sell with escrow</button>
+
+	<br>
+	<br>
+	For Testnet
+	<br>
+	<br>
+	<button onclick="sell('testnet')">Sell</button>
+	<br>
+	<button onclick="sellInDollars('testnet')">For sell ​​in dollars</button>
+	<br>
+	<button onclick="sellWithEscrow('testnet')">Sell with escrow</button>
+
 </body>
 
 </html>
