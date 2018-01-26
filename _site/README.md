@@ -108,7 +108,7 @@ BCH | NOT SUPPORTED
 ETH | ROPSTEN
 
 # TESTING
- [/examples/test.html](/examples/test.html)
+ [/docs/test.html](/docs/test.html)
 
 # LICENSE
 [MPL-2.0](https://www.mozilla.org/MPL/2.0/)
