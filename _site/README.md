@@ -1,4 +1,4 @@
-# About DunkPay.com
+# DunkPay.com
 
 DunkPay.com is the service for users who want to pay with cryptocurrency.
 Create a link, copy it and sell what you want.
@@ -99,7 +99,7 @@ dunkpay.shot(function(err,result){
 - `notificationUrl` - It is place where your server can receive request when your transaction is completed. Whole query string will be return. 
 
 # TESTNET
-You can try test with parameter `new dunkpay('testnet')`
+Initialize `new dunkpay('testnet')` for testing.
 
 Cryptocurrency | Support 
 ------------ | -------------
